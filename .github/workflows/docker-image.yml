@@ -1,0 +1,60 @@
+name: Docker Image CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Docker Login
+      uses: docker/login-action@v2.1.0
+      with:
+        username: ikrong
+        password: ${{secrets.DOCKER_TOKEN}}
+    - name: Build 20
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=20
+        push: true
+        tags: ikrong/node-git:latest, ikrong/node-git:20
+    - name: Build 18
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=18
+        push: true
+        tags: ikrong/node-git:18
+    - name: Build 16
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=16
+        push: true
+        tags: ikrong/node-git:16
+    - name: Build 14
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=14
+        push: true
+        tags: ikrong/node-git:14
+    - name: Build 12
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=12
+        push: true
+        tags: ikrong/node-git:12
+    - name: Build 10
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=10
+        push: true
+        tags: ikrong/node-git:10
+    - name: Build 8
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=8
+        push: true
+        tags: ikrong/node-git:8

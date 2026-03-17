@@ -16,12 +16,24 @@ jobs:
       with:
         username: ikrong
         password: ${{secrets.DOCKER_TOKEN}}
+    - name: Build 24
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=24
+        push: true
+        tags: ikrong/node-git:latest, ikrong/node-git:24
+    - name: Build 22
+      uses: docker/build-push-action@v4.0.0
+      with:
+        build-args: VER=22
+        push: true
+        tags: ikrong/node-git:22
     - name: Build 20
       uses: docker/build-push-action@v4.0.0
       with:
         build-args: VER=20
         push: true
-        tags: ikrong/node-git:latest, ikrong/node-git:20
+        tags: ikrong/node-git:20
     - name: Build 18
       uses: docker/build-push-action@v4.0.0
       with:
